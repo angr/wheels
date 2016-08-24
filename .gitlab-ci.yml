@@ -1,0 +1,10 @@
+before_script:
+    - which angr-test && angr-test sync hard
+
+build_images:
+    only: ["master"]
+    stage: deploy
+    script:
+    - cgc-build worker
+    - angr-build angr-ci
+    tags: ["docker-builder"]
